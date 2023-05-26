@@ -20,6 +20,7 @@ jobs:
       - name: Build with Maven  
         run: mvn clean install
     
+    
   codeql:
     runs-on: ubuntu-latest
     if: contains(['refs/heads/master', 'refs/heads/develope-2'], github.ref) && github.event_name == 'push'
