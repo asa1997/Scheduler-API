@@ -3,7 +3,8 @@ on:
   push:
     branches: [ "master","develop" ]
   pull_request:
-    branches: [ "master","develop" ]
+    #branches: [ "master","develop" ]
+    types: [closed]
     
 jobs:
   build:
