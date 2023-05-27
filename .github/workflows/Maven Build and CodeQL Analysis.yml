@@ -7,11 +7,10 @@ on:
       - opened
     branches: [ "master","develope-2" ]
     
-    
 jobs:
   build_on_pr:
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request' && (github.base_ref == 'refs/heads/master' || github.base_ref == 'refs/heads/develope-2')
+    if: github.event_name == 'pull_request' && (github.head_ref == 'refs/heads/master' || github.head_ref == 'refs/heads/develope-2')
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -63,17 +62,6 @@ jobs:
       with:
         java-version: 8
         distribution: 'adopt'
-    - name: Cache maven modules 
-      uses: actions/cache@v2
-      env:
-        cache-name: cache-maven-modules
-      with:
-        path: ~/.m2/repository
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-maven-${{ hashFiles('**/pom.xml') }}
-        restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-
-          ${{ runner.os }}-build-
-          ${{ runner.os }}
     - name: Create WAR file 
       run: mvn -B package --file pom.xml
     - name: Upload WAR file as artifact
