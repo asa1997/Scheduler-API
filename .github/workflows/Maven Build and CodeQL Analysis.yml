@@ -8,7 +8,7 @@ on:
 jobs:
   build_on_pr:
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request' && github.ref == 'refs/heads/master' || github.ref == 'refs/heads/develope-2'
+    if: ( github.event_name == 'pull_request' ) && ( github.ref == 'refs/heads/master' || github.ref == 'refs/heads/develope-2' )
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
