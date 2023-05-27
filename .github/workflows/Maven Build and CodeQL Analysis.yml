@@ -3,6 +3,8 @@ on:
   push:
     branches: [ "master","develope-2" ]
   pull_request:
+    types:
+      - opened
     branches: [ "master","develope-2" ]
     
     
