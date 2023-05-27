@@ -3,8 +3,6 @@ on:
   push:
     branches: [ "master","develope-2" ]
   pull_request:
-    types:
-      - opened
     branches: [ "master","develope-2" ]
     
 jobs:
@@ -14,6 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
       - name: Setup JDK 8
         uses: actions/setup-java@v2
         with:
