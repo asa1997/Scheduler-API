@@ -1,9 +1,9 @@
 name: Build and Deploy
 on:
   push:
-    branches: [ "master","develope-2" ]
+    branches: [ "master","develop" ]
   pull_request:
-    branches: [ "master","develope-2" ]
+    branches: [ "master","develop" ]
     
 jobs:
   build_on_pr:
